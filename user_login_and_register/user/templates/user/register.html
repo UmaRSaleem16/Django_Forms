@@ -1,0 +1,18 @@
+{% extends "user/index.html" %}
+{% load crispy_forms_tags %}
+{% block start %}
+
+<div class="content-section col-md-8 col-md-offset-2">
+  <form method="POST" style="margin: 4%; padding:10%; border-radius:0%;">
+    {% csrf_token %}
+      
+      {{ form.as_p }}
+    <br><br>
+    <center>
+      <button style="background: lightseagreen; padding:4px; font-size: 1.5rem; color:white;" class="btn btn-outline-info" type="submit">CREATE ACCOUNT</button>
+    </center>
+    <br />
+    <sub><a href="{% url "login" %}" style="text-decoration: none; font-size: 15px;color: blue; padding:3%; cursor:pointer;">Already have an account ?</a></sub>
+  </form>
+</div>
+{% endblock start %}
