@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -70,6 +71,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',  
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -160,11 +164,19 @@ EMAIL_HOST_USER="usaleem651@gmail.com"
 EMAIL_HOST_PASSWORD="iuxmvzkgsttbslbw"
 ##################################################
 
-# AUTHENTICATION_BACKENDS = [
-#     'django.contrib.auth.backends.ModelBackend',
-#     'user.authentication.EmailAuthBackend',
-#     'social_core.backends.facebook.FacebookOAuth2'
-# ]
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.github.GithubOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 SOCIAL_AUTH_FACEBOOK_KEY = '3692021920896648'
 SOCIAL_AUTH_FACEBOOK_SECRET = '1b764dffa3c882fa7aa1338cd0a288b3'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '251912330739-jus8qah7fmo8t4ff1uj4ou26i9k8covu.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'XRpwRKMLtc9HxEEecB_p9HCb'
+
+
+ALLOWED_HOSTS = ['*']
