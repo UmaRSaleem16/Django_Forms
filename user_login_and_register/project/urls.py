@@ -33,3 +33,7 @@ urlpatterns = [
     path('oauth/', include('social_django.urls', namespace='social')),
 
 ]
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'home'
